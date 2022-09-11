@@ -1,0 +1,36 @@
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+
+  <body>
+    <%- include('../partials/nav.ejs') %>
+
+    <div class="container">
+      <div class="row mt-5 ms-4">
+        <div class="col">
+          <p class="h3">All Blogs</p>
+        </div>
+      </div>
+      <div class="list-group my-4">
+        <% if (blogs.length > 0) { %>
+          <% blogs.forEach(blog => { %>
+            <a href="/blogs/<%= blog._id %>" class="list-group-item list-group-item-action p-4">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 text-break font-monospace"><%= blog.title %></h5>
+              </div>
+              <p class="mb-1 text-break font-monospace"><%= blog.snippet %></p>
+            </a>
+          <% }) %>
+        <% } else { %>
+          <p class="h3 font-monospace">There are no blogs to display.</p>
+        <% } %>
+      </div>
+      <%- include('../partials/footer.ejs') %>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
